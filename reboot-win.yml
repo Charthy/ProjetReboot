@@ -1,0 +1,22 @@
+---
+- name: "Run reboot Serveurs from Python script"
+  hosts: "windows"
+  gather_facts: "false"
+  tasks:
+    - name: "test reboot"
+      script: "files/reboot.py"
+      args:
+        executable: python
+    - name: "Wait for the reboot to complete"
+      wait_for_connection:
+        connect_timeout: 20
+        delay: 60
+        timeout: 300
+    - name: "Sending an e-mail after reboot"
+      script: "files/mailreboot.py"    
+      args:
+        executable: python
+
+            
+
+

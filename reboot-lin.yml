@@ -1,0 +1,20 @@
+---
+- name: "Run reboot Python script"
+  hosts: "linux"
+  gather_facts: "false"
+  tasks:
+    - name: "Restart Linux Hosts"
+      script: "files/reboot.py"
+    - name: "Wait for the reboot to complete"
+      wait_for:
+        state: started
+        port: 22
+        host: "{{ ansible_ssh_host | default(invetory_hostname) }}"
+        delay: 10
+        timeout: 300
+        connect_timeout: 300
+        search_regex: OpenSSH
+      delegate_to: localhost
+    - name: "Sending an e-mail after reboot"
+      script: "files/linreboot.py"
+  
