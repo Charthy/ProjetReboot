@@ -1,15 +1,16 @@
 #!/usr/bin/python
 ########################################################################## 
 # Ce script python est utilise pour rebooter des serveurs Linux et Windows
-# En envoyant en premier un message d'alerte a l'administrateur une fois le script lance
-# Puis en redémarrant le serveur selon la plateforme (Windows ou Linux) de l'OS
-# Ce script est lancé via un modul ansible qui le joue sur le groupe de serveur definit
+# en envoyant en premier un message d'alerte a l'administrateur une fois le script lancé
+# puis en redémarrant le serveur selon la plateforme (Windows ou Linux) de l'OS.
+# ce script est lancé via un modul ansible qui le joue sur le groupe de serveur du playbook 
+# utilisé. 
 # 
 # Testé avec Python 2.7.18
 #
 ##########################################################################
 #
-# importation des librairies Python nécessaires
+# Importation des librairies Python nécessaires
 import sys, platform
 import socket
 import smtplib
@@ -19,8 +20,8 @@ import smtplib
 sock_name = socket.gethostname()
 
 # Envoie d'email d'alerte en text plein via Python en utilisant le serveur 
-# SMTP de Google -  gmail d'où l'mportation du module smtplib natif de Python 
-# Ici nous faison appel aux modules permettant de définir l'expediteur, les desitaires
+# SMTP de Google -  'gmail' d'où l'mportation du module 'smtplib' natif de Python. 
+# Ici nous faison appel aux modules permettant de définir l'expediteur, les destinataires
 # ainsi que l'objet.
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
