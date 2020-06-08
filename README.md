@@ -15,9 +15,8 @@ Les hôtes à manager sont organisés en deux groupes :
   -	[Linux] pour les hôtes dont l’OS est Linux et 
   -	[Windows] pour les hôtes dont l’OS est Windows
 
-Livrables
-Mettre à disposition l’URL du répertoire GitHub public hébergeant le code et la documentation du module et script à mettre en place.
-Le principe sera simple, il faudra à une heure définie, que le module Ansible puisse s’exécuter et jouer les tâches définit afin de lancer et exécuter le script sur les cibles définit et renvoyer une alerte via email à l’admnistrateur, puis marquer un temps d’attente durant l’exécution du redémarrage des serveurs concernés. Puis, renvoyer un deuxième mail de confirmation une fois le serveur redémarré et opérationnel. 
+Fonctionnement:
+Le principe sera simple. il faudra à une heure définie, que le module Ansible puisse s’exécuter et jouer les tâches définis afin de lancer et exécuter le script sur les hotes cibles, ensuite, renvoyer une alerte via email à l’admnistrateur, puis marquer un temps d’attente durant l’exécution du redémarrage des serveurs concernés. Enfin, jouer un 2e script python qui renvera un deuxième mail de confirmation une fois le serveur redémarré et opérationnel. 
 
 Planification du reboot
 
@@ -27,7 +26,7 @@ La planification peut être sous 4 catégories :
   -	Un jour défini du mois (DAY OF MONTH)
   -	Chaque jour (EVERYDAY)
 
-Pour ma part et dans le cadre de ces modules, j’ai choisi l’exécution d’une tâche « cron » marquant le temps de réitération du module sur le groupe des serveurs définit.
+Pour ma part et dans le cadre de ces modules, je propose d'exécuter une tâche « cron » marquant le temps de réitération du module sur le groupe des serveurs définit.
 
 Le référentiel ou groupe d’hôtes
 
@@ -41,20 +40,20 @@ On se doit de mettre en place une solution gratuite et libre qui va :
   -	Permettre le redémarrage des serveurs Windows
   -	Renvoyer des alertes avant le redémarrage et après le redémarrage des serveurs.
 
-Les étapes de l’exécution du module Ansible 
+Les étapes de l’exécution du module Ansible /etc/ansible/reboot-lin.yml et /etc/ansible/reboot-win.yml 
 
 Une fois exécuté, selon qu’on aura exécuté le module exécutable sur le groupe des serveurs Linux ou Windows, le système doit :
   -	Contrôler sur le référentiel « /etc/ansible/hosts », tous les serveurs renseignés sous le groupe de serveur que j’ai nommé : Linux ou Windows 
       o	Vérifier qu’ils sont up
   -	 Démarrer la première tâche du module (Playbook) ici c’est la tâche « Reboot des serveurs »
       o	Faire appel au module ansible à utiliser ici c’est le module « script » 
-          	On fait appel à un script édité en Python sous « /etc/ansible/files/script.py » :
+          	On fait appel à un script édité en Python sous « /etc/ansible/files/reboot.py » :
           	Exécution du script sur les serveurs concernés
               •	Envoie d’une alerte informant que le serveur « hostname » va redémarrer »
               •	Puis redémarrage du serveur en choisissant les arguments « reboot » et comme raison, l’argument « maintenance ».
   -	Démarrer un module « wait_for_connection » durant le temps de redémarrage des hosts concernés et cela suite à l’éxécution du script Python. 
   -	Lancement de la 3e tâche qui est une tâche d’envoi de mail après reboot des serveurs concernés. 
-      o	Ici le script lancé sert simplement à confirmer que le serveur a bien redémarré en exécutant le script « mailreboot.py ». 
+      o	Ici le script lancé sert simplement à confirmer que le serveur a bien redémarré en exécutant le script « /files/mailreboot.py ». 
 
 
 
