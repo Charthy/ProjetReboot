@@ -1,7 +1,7 @@
 # ProjetReboot
 Introduction
 
-Mettre en place une solution de reboot de serveurs basés sur Linux et Windows en utilisant des modules « playbook » Ansible que j’édite en « Python » afin d’exécuter cette tâche. Cette approche est utile car il suffit de renseigner les hosts cibles dans le fichier host d’Ansible pour ensuite de manière automatisée, envoyer des commandes ou des scripts d’exécutions de certaines tâches répétitives aux hosts désignés sans avoir à le faire poste par poste manuellement. La tâches de reboot de serveur pouvant s’avérer être chronophage et très répétitive et Ansible pour gérer de façon centralisé et automatiser l’exécution de ces tâches sur des groupes d’hôtes reste pour ma part bien adapté. 
+Mettre en place une solution de reboot de serveurs basés sur Linux et Windows en utilisant des modules « playbook » Ansible que j’édite en « Python » afin d’exécuter cette tâche. Cette approche est utile car il suffit de renseigner les hosts cibles dans le fichier host d’Ansible pour ensuite de manière automatisée, envoyer des commandes ou des scripts d’exécutions de certaines tâches répétitives aux hosts désignés sans avoir à le faire poste par poste manuellement. La tâches de reboot de serveur pouvant s’avérer être chronophage et très répétitive, c'est ainsi que je fais le choix d'Ansible pour gérer de façon centralisé et, automatiser l’exécution de ces tâches sur des groupes d’hôtes. Ce qui pour ma part est bien adapté. 
 
 Ressources exploitables
 
