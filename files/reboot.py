@@ -31,7 +31,8 @@ Toadd = "mail_destinataire"
 message = MIMEMultipart()
 message['From'] = Fromadd
 message['To'] = Toadd
-# Specification de l'objet du mail
+# Specification de l'objet du mail en faisant appel à la fonction 'socket.gethostbyname()' 
+# Afin de récupérer l'IP de l'hote concerné
 message['Subject'] = sock_name + " : " + socket.gethostbyname(sock_name) + " , reboot"
 # Specification du message a envoyer
 msg = "Le serveur " + sock_name + " ( " + socket.gethostbyname(sock_name) + " ) " + " va rebooter"
