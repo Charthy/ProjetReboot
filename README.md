@@ -10,7 +10,7 @@ La solution proposée est étudiée pour une infrastructure de test émulant une
   -	Un serveur Windows2016
   -	Un serveur de base de données sous Debian10
 
-Pour ma part j’utilise ansible2.7.10 / ansible2.9.10 et Python2.7.14 
+Pour ma part j’utilise ansible2.7.10 / ansible2.9.10 et Python2.7.18 
 Les hôtes à manager sont organisés en deux groupes :
   -	[Linux] pour les hôtes dont l’OS est Linux et 
   -	[Windows] pour les hôtes dont l’OS est Windows
