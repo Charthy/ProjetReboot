@@ -5,8 +5,8 @@ import smtplib
 sock_name = socket.gethostname()
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-Fromadd = "yarez.leroy@gmail.com "
-Toadd = "yarez@outlook.com"
+Fromadd = "mail_expediteur "
+Toadd = "mail_destinataire"
 message = MIMEMultipart()
 message['From'] = Fromadd
 message['To'] = Toadd
@@ -15,7 +15,8 @@ msg = "Le serveur " + sock_name + " ( " + socket.gethostbyname(sock_name) + " ) 
 message.attach(MIMEText (msg.encode('utf-8'), 'plain', 'utf-8'))
 serveur = smtplib.SMTP('smtp.gmail.com', 587)
 serveur.starttls()
-serveur.login(Fromadd, "Nathan0208*Raphael")
+password = "secret_passwd"
+serveur.login(Fromadd, password)
 texte = message.as_string().encode('utf-8')
 Toadds = [Toadd]
 serveur.sendmail(Fromadd, Toadds, texte)
